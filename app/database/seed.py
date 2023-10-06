@@ -1,7 +1,7 @@
-# from db import conn
 from typing import Any, List, Dict
-
 from json import load
+
+from .db import conn
 
 
 def loadfile(file_dir: str):
@@ -10,22 +10,31 @@ def loadfile(file_dir: str):
         return data
 
 
-def seed_statuses():
-    file_loc = "./seeds/statuses.json"
+def seed_statuses(cursor):
+    file_loc = "app/database/seeds/statuses.json"
     data: List[Dict(str, Any)] = loadfile(file_loc)
     values = ""
     for v in data:
-        values += f"({v['status']}, {v['code']}),"
+        values += f"('{v['status']}', '{v['code']}'),"
 
     exc_script = f"INSERT INTO statuses(status, code) VALUES{values[:-1]}"
-
-    # c = conn.cursor()
-
-    # c.execute("INSERT INTO ")
+    cursor.execute(exc_script)
 
 
+def seed_priorities(cursor):
+    file_loc = "app/database/seeds/priorities.json"
+    data: List[Dict(str, Any)] = loadfile(file_loc)
+    values = ""
+    for v in data:
+        values += f"('{v['priority']}', '{v['code']}'),"
 
-if __name__ == "__main__":
-    seed_statuses()
+    exc_script = f"INSERT INTO priorities(priority, code) VALUES{values[:-1]}"
+    cursor.execute(exc_script)
 
 
+def run():
+    cursor = conn.cursor()
+    seed_statuses(cursor)
+    seed_priorities(cursor)
+    conn.commit()
+    conn.close()
