@@ -1,0 +1,18 @@
+[
+    {
+        "priority": "low",
+        "code": "1000"
+    },
+    {
+        "priority": "normal",
+        "code": "1001"
+    },
+    {
+        "priority": "medium",
+        "code": "1002"
+    },
+    {
+        "priority": "high",
+        "code": "1003"
+    }
+]
