@@ -3,16 +3,16 @@ CREATE TABLE IF NOT EXISTS Statuses (
     status VARCHAR(32) NOT NULL,
     code VARCHAR(12) NOT NULL DEFAULT '',
     created_at TIMESTAMPTZ DEFAULT NOW(),
-    updated_at TIMESTAMPTZ DEFAULT NOW(),
-)
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
 
 CREATE TABLE IF NOT EXISTS Priorities (
     id SERIAL PRIMARY KEY,
     priority VARCHAR(32) NOT NULL,
     code VARCHAR(12) NOT NULL DEFAULT '',
     created_at TIMESTAMPTZ DEFAULT NOW(),
-    updated_at TIMESTAMPTZ DEFAULT NOW(),
-)
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
 
 
 CREATE TABLE IF NOT EXISTS Tasks (
@@ -23,5 +23,5 @@ CREATE TABLE IF NOT EXISTS Tasks (
     start_date_time TIMESTAMPTZ,
     end_date_time TIMESTAMPTZ,
     created_at TIMESTAMPTZ DEFAULT NOW(),
-    updated_at TIMESTAMPTZ DEFAULT NOW(),
-)
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
