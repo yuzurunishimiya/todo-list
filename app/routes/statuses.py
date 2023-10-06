@@ -5,25 +5,27 @@ from flask import abort, jsonify
 from app.database.db import conn
 
 
-statuses = Blueprint('status', __name__, url_prefix="/status")
+bp_statuses = Blueprint("status", __name__, url_prefix="/status")
 
 
-@statuses.route('', methods=["GET"])
+@bp_statuses.route("", methods=["GET"])
 def get_statuses():
     cur = conn.cursor()
     cur.execute("SELECT id, status FROM statuses")
     data = cur.fetchall()
 
-    column_name = ['id','status']
+    column_name = ["id", "status"]
     lod_result = [dict(zip(column_name, row)) for row in data]
 
     return jsonify(lod_result)
 
 
-@statuses.route("/<int:status_id>", methods=["GET"])
+@bp_statuses.route("/<int:status_id>", methods=["GET"])
 def get_status(status_id):
     cur = conn.cursor()
-    cur.execute("SELECT id, status FROM statuses WHERE id={}".format(status_id))
+    cur.execute(
+        "SELECT id, status FROM statuses WHERE id={}".format(status_id)
+    )
     datum = cur.fetchone()
 
     if datum is None:

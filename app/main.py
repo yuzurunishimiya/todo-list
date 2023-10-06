@@ -2,8 +2,8 @@ from flask import Flask
 from flask import jsonify
 
 from .routes.tasks import todo
-from .routes.status import statuses
 from .routes.priorities import bp_priorities
+from .routes.statuses import statuses
 
 
 app = Flask(__name__)
