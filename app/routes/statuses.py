@@ -1,11 +1,10 @@
 from flask import Blueprint
 from flask import abort, jsonify
 
-# pylint: disable=E0611
 from app.database.db import conn
 
 
-bp_statuses = Blueprint("status", __name__, url_prefix="/status")
+bp_statuses = Blueprint("bp_status", __name__, url_prefix="/status")
 
 
 @bp_statuses.route("", methods=["GET"])

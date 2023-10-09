@@ -1,7 +1,6 @@
 from flask import Blueprint
 from flask import abort, jsonify
 
-# pylint: disable=E0611
 from app.database.db import conn
 
 
